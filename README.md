@@ -33,7 +33,7 @@ You need to install the required dependencies by running the build.sh script. No
 
 ```shell
 ./scripts/build.sh
-````
+```
 
 If you get an error `permision denied`, do the following:
 
@@ -41,10 +41,9 @@ If you get an error `permision denied`, do the following:
 sudo chmod u+x ./scripts/filename.sh
 ```
 
-This script will look through all the imports and add the dependencies to a `requirements.txt` file. Then it installs all the listed dependencies.
-
-Once you hace all the required dependiencies, you can go ahead and run the app like this:
+Once you have all the required dependiencies, you can go ahead and run the app like this:
 
 ```shell
 ./scripts/run.sh
 ```
+````
