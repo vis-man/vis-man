@@ -26,9 +26,9 @@ virtualenv <YOUR-ENVIRONMENT-NAME>
 
 next start your created virtual environment. In linux run:
 
-````shell
+```shell
 source <YOUR-ENVIRONMENT-NAME>/bin/activate
-
+```
 You need to install the required dependencies by running the build.sh script. Note: Run the .sh files from the parent directory of ```scripts``` directory. E.g.:
 
 ```shell
