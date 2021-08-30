@@ -1,1 +1,1 @@
-web: gunicorn vis_man_project.wsgi
+web: gunicorn vis_man_project.wsgi --log-file -
