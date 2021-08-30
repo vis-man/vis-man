@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7brd^o)pcf)$m^#co-+hg(*g(x=$y6__drbddwyisb+&z@y7g$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['vis-man-uwa.herokuapp.com']
+ALLOWED_HOSTS = ['vis-man-uwa.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -48,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'vis_man_project.urls'
