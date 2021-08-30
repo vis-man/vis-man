@@ -1,0 +1,1 @@
+web: gunicorn vis_man_project.wsgi
