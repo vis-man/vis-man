@@ -1,0 +1,35 @@
+{% extends "survey/base.html" %} {% block content %}
+<div
+  class="d-flex flex-column align-items-center justify-content-md-center h-100"
+>
+  <h1 class="mb-5 mt-auto pt-5">Which Site Are You Planning to Visit?</h1>
+
+  <div class="list-group mb-auto py-5 mt-4">
+    <a
+      href="{% url 'gingin'%}"
+      class="list-group-item my-2 py-2 rounded-3"
+      aria-current="true"
+      >Gingin Gravity Precinct
+    </a>
+    <a
+      href="{% url 'iomrc'%}"
+      class="list-group-item my-2 py-2 rounded-3"
+      aria-current="true"
+      >IOMRC Crawley
+    </a>
+    <a
+      href="{% url 'watermans'%}"
+      class="list-group-item my-2 py-2 rounded-3"
+      aria-current="true"
+      >Watermans Bay
+    </a>
+    <a
+      href="{% url 'ridgefield'%}"
+      class="list-group-item my-2 py-2 rounded-3"
+      aria-current="true"
+      >Ridgefield Farm
+    </a>
+  </div>
+</div>
+
+{% endblock content %}
