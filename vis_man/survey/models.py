@@ -14,9 +14,9 @@ class Visitor(models.Model):
   email = models.EmailField()
 #   phone = models.IntegerField()
   nightstay = models.BooleanField(default=False)
-  checkin = models.DateTimeField()
+  checkin = models.DateTimeField(auto_now_add=True)
   planned_checkout = models.DateTimeField()
-  checkout = models.DateTimeField()
+  checkout = models.DateTimeField(null=True, blank=True)
 #   induction = models.CharField(max_length=50)
 #   emergency_name = models.CharField(max_length=50)
 #   emergency_phone = models.IntegerField()
@@ -25,4 +25,4 @@ class Visitor(models.Model):
   
 
   def __str__(self):
-    return self.name
+    return self.visitor_name
