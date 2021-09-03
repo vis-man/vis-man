@@ -1,30 +1,16 @@
 from django.shortcuts import render
-
+from .models import Site
 
 def home(request):
     context = {
-        'title': 'Visitor Management System'
+        'title': 'Visitor Management System',
+        'sites': Site.objects.all()
     }
     return render(request, 'survey/home.html', context)
 
-def gingin(request):
+def sites(request, pk):
     context = {
-        'title': 'Gingin Gravity Precinct'
-    }
-    return render(request, 'survey/form.html', context)
-def iomrc(request):
-    context = {
-        'title': 'IOMRC Crawley'
-    }
-    return render(request, 'survey/form.html', context)
-def watermans(request):
-    context = {
-        'title': 'Watermans Bay'
-    }
-    return render(request, 'survey/form.html', context)
-def ridgefield(request):
-    context = {
-        'title': 'Ridgefield Farm'
+        'site': Site.objects.get(id=pk)
     }
     return render(request, 'survey/form.html', context)
     
