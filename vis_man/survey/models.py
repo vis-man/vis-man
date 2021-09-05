@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 class Site(models.Model):
   name = models.CharField(max_length=50, unique=True)
@@ -7,6 +8,7 @@ class Site(models.Model):
   def __str__(self):
     return self.name
 
+now = datetime.now()
 
 class Visitor(models.Model):
   visitor_name = models.CharField(max_length=50)
@@ -14,7 +16,7 @@ class Visitor(models.Model):
   email = models.EmailField()
 #   phone = models.IntegerField()
   nightstay = models.BooleanField(default=False)
-  checkin = models.DateTimeField(auto_now_add=True)
+  checkin = models.DateTimeField(default=now.strftime("%Y-%m-%d %H:%M:%S"))
   planned_checkout = models.DateTimeField()
   checkout = models.DateTimeField(null=True, blank=True)
 #   induction = models.CharField(max_length=50)
