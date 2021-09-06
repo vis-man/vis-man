@@ -1,17 +1,14 @@
-{% extends "survey/base.html" %} {% block content %}
-<div
-  class="d-flex flex-column align-items-center justify-content-md-center h-100"
->
-  <h1 class="mb-5 mt-auto pt-5">Which Site Are You Planning to Visit?</h1>
-  <div class="list-group mb-auto py-5 mt-4">
-    {% for site in sites %}
-    <a
-      href="{% url 'site' site.id%}"
-      class="list-group-item my-2 py-2 rounded-3"
-      aria-current="true"
-      >{{site.name}}
-    </a>
-    {% endfor %}
-  </div>
+{% extends "survey/base.html" %} 
+{% block content %}
+{% load static %}
+<div class="d-flex justify-content-center align-items-center h-100">
+  <a href="{% url 'vis-man-signout'%}" class="card d-flex flex-column align-items-center justify-content-md-center text-decoration-none mx-5" style="width: 18rem; border-radius: 15%">
+    <img src="{% static 'survey/logout.png' %}" class="card-img-top px-4" alt="...">
+    <h1 class='text-dark pb-3'>Sign Out</h1>
+  </a>
+  <a href="{% url 'vis-man-sites'%}" class="card d-flex flex-column align-items-center justify-content-md-center text-decoration-none mx-5" style="width: 18rem; border-radius: 15%">
+    <img src="{% static 'survey/login.png' %}" class="card-img-top px-4" alt="...">
+    <h1 class='text-dark pb-3'>Sign In</h1>
+  </a>
 </div>
 {% endblock content %}
