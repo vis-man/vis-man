@@ -1,0 +1,186 @@
+
+Current Layout/Structure: 
+
+Example - Gingin Gravity Precinct Site Registration Form https://bit.ly/3kBEEKl
+
+Page 1: 
+- Full name
+- Role (UWA staff, UWA student, other)
+- Email adrress
+- Mobile phone number
+- Will you be staying over night? (Yes, No)
+
+All questions require an answer. If "no" is chosen for staying over night, then the 
+user can submit the form and is taken to the confirmation page. If "yes" is chosen,
+then the user is taken to page 2, where they will answer further questions relating
+to their overnight stay.
+
+Page 2:
+- A list of house rules to respect, which are:
+  - behave in a mature and considerate manner at all times
+  - clean up after yourself and share cleaning duties with other house members
+  - keep noise to a minimum and be mindful of people studying or sleeping
+  - drunken behaviour, drugs and other illicit substances are strictly prohibited
+  - the gingin gravity precinct is a smoke free zone
+  - no pets allowed
+  - respect all UWA property and the surrounding environment
+  - report any faults, damage or concerns to John Moore, Operations Manager
+- Arrival date (dd/MM/yyyy)
+- Departure date (dd/MM/yyyy)
+- Have you completed the Gingin Gravity Precinct Building Induction? (Yes, No, other)
+
+All the questions require an answer. Once all questions answered, user can move to 
+the third and final page. 
+
+Page 3:
+- Full name of emergency contact person
+- Emergency contact phone number
+- Relationship to you
+
+All questions require an answer. When all questions are filled in, the user can submit 
+and is then taken to the confirmation page.
+
+Confirmation Page:
+- Option to print or get PDF of answers
+- Option to submit another response
+
+// ------------------------------------------------------------------------------------
+
+Visitor Management App Details (provided by Chris)
+
+Locations with accomodation facilities:
+- Gingin Gravity precinct
+- UWA Farm Ridgefield
+
+Locations without accomodation facilities: 
+- The Centre for Microscopy, Characterisation and Analysis
+- Indian Ocean Marine Research Centre Crawley
+- Indian Ocean Marine Research Centre Watermans Bay
+- Animal Care Services
+- Coastal and Offshure Engineering Lab
+
+Visitor Roles:
+- UWA staff
+- UWA student
+- Other University staff
+- Other University student
+- Contractor
+- Other
+
+Need admin account to log people out.
+
+// ------------------------------------------------------------------------------------
+
+Draft Application Layout/Structure
+
+One website for all the sites. Sites will be differentiated through different url paths.
+There is a sign in and sign out paths, and sites with accomodation facilities will have 
+additional pages asking for details relating to that. It will have some similarities 
+to the example given by Chris. Here are the details for each page (the exact url names 
+are yet to be decided): 
+
+1. /uwa_visitor_management.com/
+
+This homepage page will ask users which site they are visiting. Users will select the 
+correct option for a list of all the sites. 
+- Gingin Gravity precinct
+- UWA Farm Ridgefield
+- The Centre for Microscopy, Characterisation and Analysis
+- Indian Ocean Marine Research Centre Crawley
+- Indian Ocean Marine Research Centre Watermans Bay
+- Animal Care Services
+- Coastal and Offshure Engineering Lab
+
+When the user has selected their site, they can move to the next page pertaining to 
+that site, and choose to sign in or sign out.
+
+Alternatively, each sites link and QR code could take them to that particular sites 
+homepage instead of the general homepage, e.g. /uwa_visitor_management.com/gingin_gravity/. 
+
+2. /uwa_visitor_management.com/gingin_gravity/
+
+The user will choose to sign in or sign out. The next page they can move to depends on 
+which option they chose. 
+
+3. /uwa_visitor_management.com/gingin_gravity/sign_in/
+
+If the user chose sign in on the last page, then they will be taken here and asked to 
+fill in their visitor details, which are;
+- Full name
+- Role
+  - UWA staff
+  - UWA student
+  - other University staff
+  - other university student
+  - contractor 
+  - other
+- Email adrress
+- Mobile phone number
+
+If the site doesn't have accomodation facilities, then the user can submit their answers
+and move on to the confirmation page. 
+
+If the site happens to be one with accomodation facilities, then there will be an
+additional question:
+- Will you be staying over night? (Yes, No)
+
+If the user selects no, then they will be able to submit their answers and move on to
+the confirmation page. If the user selects yes, then they can move on to the next page 
+where they will answer accomodation details and read some house rules. 
+
+4. /uwa_visitor_management.com/gingin_gravity/sign_in/accommodation/
+
+The user will answer questions relating to their stay and read some house rules.
+- A list of house rules to respect, which are:
+  - behave in a mature and considerate manner at all times
+  - clean up after yourself and share cleaning duties with other house members
+  - keep noise to a minimum and be mindful of people studying or sleeping
+  - drunken behaviour, drugs and other illicit substances are strictly prohibited
+  - the gingin gravity precinct is a smoke free zone
+  - no pets allowed
+  - respect all UWA property and the surrounding environment
+  - report any faults, damage or concerns to John Moore, Operations Manager
+- Arrival date (dd/MM/yyyy)
+- Departure date (dd/MM/yyyy)
+- Have you completed the Gingin Gravity Precinct Building Induction? (Yes, No, other)
+
+After filling out these questions, the user can move on to the next page and answer
+questions about their emergency contact information. 
+
+5. /uwa_visitor_management.com/gingin_gravity/sign_in/emergency_contact/
+
+The user will answer questions about their emergency contact details:
+- Full name of emergency contact person
+- Emergency contact phone number
+- Relationship to you
+
+Once these questions have been completed, the user can submit their answers and they 
+will be taken to the confirmation page. 
+
+6. /uwa_visitor_management.com/gingin_gravity/sign_in/confirmation/
+
+The confirmation page displays a simple thank you message and gives the users some 
+options for what to do next:
+- Option to print or get PDF of answers
+- Option to sign out
+
+7. /uwa_visitor_management.com/gingin_gravity/sign_out
+
+If the user chose the sign out option instead of the sign in option on this sites 
+homepage, then they will be taken here. All the user has to do is provide the minimum 
+amount of information necessary to identify them. This is something we need to decide. 
+Assuming this was just someones name and mobile phone number, the page would look like 
+this:
+- Full name
+- Mobile phone number
+
+When the user has answered these questions, they can submit and be taken the sign out 
+confirmation page. It is then up to the website to match the name and phone number to a person in the 
+database and mark them as having left. 
+
+8. /uwa_visitor_management.com/gingin_gravity/sign_out/confirmation
+
+This page is almost the same as the sign in confirmation page, except the thank you 
+message is different. 
+- Option to print or get PDF of answers
+- Option to sign in again
