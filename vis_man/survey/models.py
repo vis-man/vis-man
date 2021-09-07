@@ -16,7 +16,7 @@ class Visitor(models.Model):
   first_name = models.CharField(max_length=50, null=False, blank=False)
   last_name = models.CharField(max_length=50, null=False, blank=False)
   email = models.EmailField(max_length=200, null=False, blank=False)
-  phone_number = PhoneNumberField(unique=True, null=False, blank=False)
+  phone_number = PhoneNumberField(unique=True, null=True, blank=True)
   role = models.CharField(max_length=100, null=False, blank=False)
   nightstay = models.BooleanField(default=False)
   checkin = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), editable=False)
@@ -34,6 +34,6 @@ class Visitor(models.Model):
 class History(models.Model):
   id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
   checkin = models.DateTimeField(null=False, blank=False, editable=False)
-  checkout = models.DateTimeField(null=False, blank=False, editable=False)
+  checkout = models.DateTimeField(null=True, blank=True)
   nightstay = models.BooleanField(default=False)
   visitor = models.ForeignKey(Visitor, on_delete=models.CASCADE)
