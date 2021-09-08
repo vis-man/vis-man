@@ -25,8 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'survey.apps.SurveyConfig',
-    'phonenumber_field'
+    'survey.apps.SurveyConfig', 
+    'phonenumber_field',
+    'vis_man_admin.apps.VisManAdminConfig'
 ]
 
 MIDDLEWARE = [
@@ -95,9 +96,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-au'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Australia/Perth'
 
 USE_I18N = True
 
