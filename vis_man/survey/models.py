@@ -13,7 +13,7 @@ class Visitor(models.Model):
   nightstay = models.BooleanField(default=False)
   checkin = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), editable=False)
   planned_checkout = models.DateTimeField(null=False, blank=False)
-  checkout = models.DateTimeField(null=True, blank=True, editable=False)
+  checkout = models.BooleanField(default=False, null=True, blank=True)
   emergency_first_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_phone = PhoneNumberField(unique=True, null=True, blank=True, region='AU')

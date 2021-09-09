@@ -16,16 +16,23 @@ def signout(request):
     return render(request, 'survey/signout.html')
 
 def forms(request, pk):
+    site = Site.objects.get(id=pk)
+    accomodation = site.accomodation
+    exclude = {
+        'accomodation': accomodation
+    }
+    
     if request.method == 'POST':
-        main_form = MainForm(request.POST)
+        main_form = MainForm(exclude, request.POST)
         if main_form.is_valid():
             main_form.save()
+            print('------>' + main_form)
             return redirect('vis-man-home')
-    else:
-        main_form = MainForm()
-        context = {
-            'site': Site.objects.get(id=pk),
-            'main_form': main_form
-        }
+
+    main_form = MainForm(exclude)
+    context = {
+        'site':site,
+        'main_form': main_form
+    }
     return render(request, 'survey/form.html', context)
     
