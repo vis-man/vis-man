@@ -25,8 +25,8 @@ def forms(request, pk):
     if request.method == 'POST':
         main_form = MainForm(exclude, request.POST)
         if main_form.is_valid():
-            main_form.save()
-            print('------>' + main_form)
+            visitor = main_form.save()
+            site.visitors.add(visitor)
             return redirect('vis-man-home')
 
     main_form = MainForm(exclude)

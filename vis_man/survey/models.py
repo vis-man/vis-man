@@ -3,6 +3,15 @@ from datetime import datetime
 from phonenumber_field.modelfields import PhoneNumberField
 import uuid
 
+class Site(models.Model):
+  id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+  name = models.CharField(max_length=100, unique=True)
+  accomodation = models.BooleanField(default=False)
+  visitors = models.ManyToManyField('Visitor', null=True, blank=True)
+
+  def __str__(self):
+    return self.name
+
 class Visitor(models.Model):
   id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
   first_name = models.CharField(max_length=50, null=False, blank=False)
@@ -21,15 +30,6 @@ class Visitor(models.Model):
   
   def __str__(self):
     return self.first_name + ' ' + self.last_name
-
-class Site(models.Model):
-  id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-  name = models.CharField(max_length=100, unique=True)
-  accomodation = models.BooleanField(default=False)
-  visitor = models.ManyToManyField(Visitor)
-
-  def __str__(self):
-    return self.name
 
 class History(models.Model):
   id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)

@@ -2,10 +2,6 @@ from django import forms
 from .models import Visitor
 
 class MainForm(forms.ModelForm):
-    def __init__(self, exclude, *args, **kwargs):
-        super(MainForm, self).__init__(*args, **kwargs)
-        if not exclude['accomodation']:
-            del self.fields['nightstay']
     class Meta:
         model = Visitor
         fields = [
@@ -37,6 +33,10 @@ class MainForm(forms.ModelForm):
             'nightstay': 'Are you planning to stay overnight?',
             'planned_checkout': 'Planned Checkout'
         }
+    def __init__(self, exclude, *args, **kwargs):
+        super(MainForm, self).__init__(*args, **kwargs)
+        if not exclude['accomodation']:
+            del self.fields['nightstay']
 
 class EmergencyForm(forms.ModelForm):
     class Meta:
