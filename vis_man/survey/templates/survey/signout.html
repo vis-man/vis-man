@@ -1,3 +1,23 @@
 {% extends "survey/base.html" %} {% block content %}
-<h1> Sign Out </h1>
+<div
+  class="
+    form-group
+    d-flex
+    flex-column
+    align-items-center
+    justify-content-center
+    h-100
+  "
+>
+  <form action="" method="post">
+    {% csrf_token %} 
+    {% for field in signout_form %}
+    <div class="mb-3">
+      <div class="mb-2">{{ field.label }}</div>
+      {{ field }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Sign Out" class="btn btn-dark" />
+  </form>
+</div>
 {% endblock content %}

@@ -62,20 +62,9 @@ class EmergencyForm(forms.ModelForm):
             'emergency_relation': 'Relationship'
         }
 
-class Signout(forms.ModelForm):
-    class Meta:
-        model = Visitor
-        fields = [
-            'email',
-            'phone_number'
-        ]
+class Signout(forms.Form):
 
-        widgets = {
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'})
-        }
-
-        labels = {
-            'email': 'Email',
-            'phone_number': 'Phone Number'
-        }
+    email= forms.EmailField(label='Email')
+    phone_number= forms.CharField(label='Phone Number')
+    email.widget.attrs.update({'class': 'form-control'})
+    phone_number.widget.attrs.update({'class': 'form-control'})

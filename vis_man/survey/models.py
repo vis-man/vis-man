@@ -39,4 +39,4 @@ class History(models.Model):
   nightstay = models.BooleanField(null=False, blank=False, editable=False)
   
   def __str__(self):
-    return self.checkin
+    return str(self.id)
