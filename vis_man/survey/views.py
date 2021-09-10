@@ -20,20 +20,21 @@ def signout(request):
             e = signout_form.cleaned_data['email']
             ph = signout_form.cleaned_data['phone_number']
             visitor = Visitor.objects.get(email=e, phone_number=ph)
-            site = Site.objects.get(visitors=visitor)
-            site.visitors.remove(visitor)
+            if not visitor.checkout:
+                site = Site.objects.get(visitors=visitor)
+                site.visitors.remove(visitor)
 
-            history = History(
-                checkin = visitor.checkin,
-                checkout = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                nightstay = visitor.nightstay
-            )
+                history = History(
+                    checkin = visitor.checkin,
+                    checkout = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    nightstay = visitor.nightstay
+                )
 
-            history.visitor = visitor
-            history.save()
-            visitor.checkout = True
-            visitor.save()
-            return redirect('vis-man-home')
+                history.visitor = visitor
+                history.save()
+                visitor.checkout = True
+                visitor.save()
+                return redirect('vis-man-home')
 
     signout_form = Signout()
     context = {
