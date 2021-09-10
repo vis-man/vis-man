@@ -27,7 +27,6 @@ class Visitor(models.Model):
   emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_phone = PhoneNumberField(unique=True, null=True, blank=True, region='AU')
   emergency_relation = models.CharField(max_length=50, null=True, blank=True)
-  history = models.ForeignKey('History', blank=True, null=True, on_delete=models.PROTECT)
 
   def __str__(self):
     return self.first_name + ' ' + self.last_name
@@ -37,6 +36,7 @@ class History(models.Model):
   checkin = models.DateTimeField(null=False, blank=False, editable=False)
   checkout = models.DateTimeField(null=False, blank=False, editable=False)
   nightstay = models.BooleanField(null=False, blank=False, editable=False)
+  visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
   
   def __str__(self):
     return str(self.id)

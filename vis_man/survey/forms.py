@@ -1,5 +1,6 @@
 from django import forms
 from .models import Visitor
+from phonenumber_field.formfields import PhoneNumberField
 
 class MainForm(forms.ModelForm):
     class Meta:
@@ -65,6 +66,6 @@ class EmergencyForm(forms.ModelForm):
 class Signout(forms.Form):
 
     email= forms.EmailField(label='Email')
-    phone_number= forms.CharField(label='Phone Number')
+    phone_number= PhoneNumberField(region='AU')
     email.widget.attrs.update({'class': 'form-control'})
     phone_number.widget.attrs.update({'class': 'form-control'})
