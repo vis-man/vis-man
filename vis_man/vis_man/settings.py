@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'survey.apps.SurveyConfig', 
+    'phonenumber_field',
     'vis_man_admin.apps.VisManAdminConfig'
 ]
 

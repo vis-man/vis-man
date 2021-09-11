@@ -1,30 +1,42 @@
 from django.db import models
 from datetime import datetime
+from phonenumber_field.modelfields import PhoneNumberField
+import uuid
 
 class Site(models.Model):
-  name = models.CharField(max_length=50, unique=True)
-  address = models.CharField(max_length=100)
+  id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+  name = models.CharField(max_length=100, unique=True)
+  accomodation = models.BooleanField(default=False)
+  visitors = models.ManyToManyField('Visitor', null=True, blank=True)
 
   def __str__(self):
     return self.name
 
-now = datetime.now()
-
 class Visitor(models.Model):
-  visitor_name = models.CharField(max_length=50)
-  role = models.CharField(max_length=50)
-  email = models.EmailField()
-#   phone = models.IntegerField()
+  id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+  first_name = models.CharField(max_length=50, null=False, blank=False)
+  last_name = models.CharField(max_length=50, null=False, blank=False)
+  email = models.EmailField(max_length=200, null=False, blank=False, unique=True)
+  phone_number = PhoneNumberField(unique=True, null=False, blank=False, region='AU')
+  role = models.CharField(max_length=100, null=False, blank=False)
   nightstay = models.BooleanField(default=False)
-  checkin = models.DateTimeField(default=now.strftime("%Y-%m-%d %H:%M:%S"))
-  planned_checkout = models.DateTimeField()
-  checkout = models.DateTimeField(null=True, blank=True)
-#   induction = models.CharField(max_length=50)
-#   emergency_name = models.CharField(max_length=50)
-#   emergency_phone = models.IntegerField()
-#   emergency_relation = models.CharField(max_length=50)
-#   place = models.ForeignKey('Site',on_delete=models.PROTECT, default=1)
-  
+  checkin = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), editable=False)
+  planned_checkout = models.DateTimeField(null=False, blank=False)
+  checkout = models.BooleanField(default=False, null=True, blank=True)
+  emergency_first_name = models.CharField(max_length=50, null=True, blank=True)
+  emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
+  emergency_phone = PhoneNumberField(unique=True, null=True, blank=True, region='AU')
+  emergency_relation = models.CharField(max_length=50, null=True, blank=True)
 
   def __str__(self):
-    return self.visitor_name
+    return self.first_name + ' ' + self.last_name
+
+class History(models.Model):
+  id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+  checkin = models.DateTimeField(null=False, blank=False, editable=False)
+  checkout = models.DateTimeField(null=False, blank=False, editable=False)
+  nightstay = models.BooleanField(null=False, blank=False, editable=False)
+  visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
+  
+  def __str__(self):
+    return str(self.id)
