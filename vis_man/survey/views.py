@@ -17,8 +17,8 @@ def signout(request):
     if request.method == 'POST':
         signout_form = Signout(request.POST)
         if signout_form.is_valid():
-            e = signout_form.cleaned_data['email']
-            ph = signout_form.cleaned_data['phone_number']
+            e = signout_form['email'] #removed .cleaned_data
+            ph = signout_form['phone_number']
             visitor = Visitor.objects.get(email=e, phone_number=ph)
             if not visitor.checkout:
                 site = Site.objects.get(visitors=visitor)

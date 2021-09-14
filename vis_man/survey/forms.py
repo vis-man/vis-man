@@ -3,15 +3,16 @@ from .models import Visitor
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
+
 class MainForm(forms.ModelForm):
     class Meta:
         model = Visitor
         fields = [
-            'first_name', 
-            'last_name', 
-            'email', 
-            'phone_number', 
-            'role', 
+            'first_name',
+            'last_name',
+            'email',
+            'phone_number',
+            'role',
             'nightstay',
             'planned_checkout'
         ]
@@ -24,7 +25,7 @@ class MainForm(forms.ModelForm):
             'phone_number': PhoneNumberPrefixWidget(attrs={'class': 'form-control'}, initial='AU'),
             'role': forms.TextInput(attrs={'class': 'form-control'}),
             'nightstay': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-            'planned_checkout': forms.DateTimeInput(attrs={'type': 'datetime-local','class': 'form-control'})
+            'planned_checkout': forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'})
         }
 
         labels = {
@@ -36,10 +37,12 @@ class MainForm(forms.ModelForm):
             'nightstay': 'Are you planning to stay overnight?',
             'planned_checkout': 'Planned Checkout'
         }
+
     def __init__(self, exclude, *args, **kwargs):
         super(MainForm, self).__init__(*args, **kwargs)
         if not exclude['accomodation']:
             del self.fields['nightstay']
+
 
 class EmergencyForm(forms.ModelForm):
     class Meta:
@@ -65,9 +68,28 @@ class EmergencyForm(forms.ModelForm):
             'emergency_relation': 'Relationship'
         }
 
-class Signout(forms.Form):
 
-    email= forms.EmailField(label='Email')
-    phone_number= PhoneNumberField(region='AU')
-    email.widget.attrs.update({'class': 'form-control'})
-    phone_number.widget.attrs.update({'class': 'form-control'})
+class Signout(forms.ModelForm):
+    class Meta:
+        model = Visitor
+        fields = [
+            'email',
+            'phone_number'
+        ]
+
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'phone_number': PhoneNumberPrefixWidget(attrs={'class': 'form-control'}, initial='AU')
+        }
+
+        labels = {
+            'email': 'Email',
+            'phone_number': 'Phone Number'
+        }
+
+# class Signout(forms.Form):
+
+#     email= forms.EmailField(label='Email')
+#     phone_number= PhoneNumberField(region='AU')
+#     email.widget.attrs.update({'class': 'form-control'})
+#     phone_number.widget.attrs.update({'class': 'form-control'})
