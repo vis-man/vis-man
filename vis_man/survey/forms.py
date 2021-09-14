@@ -1,6 +1,7 @@
 from django import forms
 from .models import Visitor
 from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 class MainForm(forms.ModelForm):
     class Meta:
@@ -19,7 +20,8 @@ class MainForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            # 'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': PhoneNumberPrefixWidget(attrs={'class': 'form-control'}, initial='AU'),
             'role': forms.TextInput(attrs={'class': 'form-control'}),
             'nightstay': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'planned_checkout': forms.DateTimeInput(attrs={'type': 'datetime-local','class': 'form-control'})
