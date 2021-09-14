@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | change me{% endblock %}
+<!-- Change title to anything above (currently 'change me') -->
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">whatever we want</a></h1>
+<!-- Changes the header -->
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
