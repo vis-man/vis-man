@@ -2,7 +2,6 @@ from django.shortcuts import redirect, render
 from .models import Site, Visitor, History
 from .forms import MainForm, Signout
 from datetime import datetime
-# from django.contrib import messages 
 
 def home(request):
     return render(request, 'survey/home.html')
