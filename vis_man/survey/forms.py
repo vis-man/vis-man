@@ -13,7 +13,7 @@ class MainForm(forms.ModelForm):
                     ('other', 'Other'))
 
     # role_dropdown = forms.Select()
-    role_dropdown = forms.CharField(label='Select Role', widget=forms.Select(choices=role_choices, attrs={'class': 'form-control'}))
+    role_dropdown = forms.CharField(label='Select Role', initial=('staff', 'UWA Staff'), widget=forms.Select(choices=role_choices, attrs={'class': 'form-control'}))
 
     class Meta:
         model = Visitor
