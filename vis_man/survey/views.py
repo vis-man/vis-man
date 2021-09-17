@@ -14,6 +14,8 @@ def sites(request):
     return render(request, 'survey/sites.html', context)
 
 def signout(request):
+    signout_form = Signout()
+    
     if request.method == 'POST':
         signout_form = Signout(request.POST)
         if signout_form.is_valid():
@@ -36,7 +38,6 @@ def signout(request):
                 visitor.save()
                 return redirect('vis-man-home')
 
-    signout_form = Signout()
     context = {
         'signout_form': signout_form
     }
@@ -48,6 +49,8 @@ def forms(request, pk):
     exclude = {
         'accomodation': accomodation
     }
+
+    main_form = MainForm(exclude)
     
     if request.method == 'POST':
         main_form = MainForm(exclude, request.POST)
@@ -56,7 +59,6 @@ def forms(request, pk):
             site.visitors.add(visitor)
             return redirect('vis-man-home')
 
-    main_form = MainForm(exclude)
     context = {
         'site':site,
         'main_form': main_form

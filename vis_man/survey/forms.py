@@ -60,6 +60,11 @@ class MainForm(forms.ModelForm):
             'planned_checkout': 'Planned Checkout',
         }
 
+        error_messages = {
+            'phone_number' : { 'invalid': 'Please enter a valid phone number.' },
+            'emergency_phone' : { 'invalid': 'Please enter a valid phone number for your emergency contact.' },
+        }
+
     def __init__(self, exclude, *args, **kwargs):
         super(MainForm, self).__init__(*args, **kwargs)
         self.order_fields(['first_name',
@@ -85,4 +90,5 @@ class MainForm(forms.ModelForm):
 class Signout(forms.Form):
     email = forms.EmailField(label='Email')
     phone_number = PhoneNumberField(label=('Phone Number'), required=True, widget=PhoneNumberPrefixWidget(attrs={'class': 'form-control'}, initial='AU'))
+    phone_number.error_messages['invalid'] = 'Please enter a valid phone number.'
     email.widget.attrs.update({'class': 'form-control'})
