@@ -36,6 +36,7 @@ class VisitorAdmin(admin.ModelAdmin):
   )
   list_display = [
     'visitor_name',
+    'role',
     'email',
     'phone_number',
     'checkin',
