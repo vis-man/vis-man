@@ -12,7 +12,6 @@ class MainForm(forms.ModelForm):
                     ('contractor', 'Contractor'),
                     ('other', 'Other'))
 
-    # role_dropdown = forms.Select()
     role_dropdown = forms.CharField(label='Select Role', initial=('staff', 'UWA Staff'), widget=forms.Select(choices=role_choices, attrs={'class': 'form-control'}))
 
     class Meta:
@@ -80,7 +79,6 @@ class MainForm(forms.ModelForm):
             del self.fields['emergency_last_name']
             del self.fields['emergency_phone']
             del self.fields['emergency_relation']
-
 
 class Signout(forms.Form):
     email = forms.EmailField(label='Email')

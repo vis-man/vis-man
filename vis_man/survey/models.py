@@ -22,7 +22,7 @@ class Visitor(models.Model):
   nightstay = models.BooleanField(default=False)
   checkin = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), editable=False)
   planned_checkout = models.DateTimeField(null=False, blank=False)
-  checkout = models.BooleanField(default=False, null=True, blank=True)
+  checkout = models.BooleanField(default=False)
   emergency_first_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_phone = PhoneNumberField(unique=True, null=True, blank=True)
@@ -37,6 +37,9 @@ class History(models.Model):
   checkout = models.DateTimeField(null=False, blank=False, editable=False)
   nightstay = models.BooleanField(null=False, blank=False, editable=False)
   visitor = models.ForeignKey(Visitor, on_delete=models.PROTECT)
+
+  class Meta:
+    verbose_name_plural = ("Histories")
   
   def __str__(self):
     return str(self.id)
