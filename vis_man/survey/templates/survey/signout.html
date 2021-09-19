@@ -10,15 +10,14 @@
   "
 >
   <form action="" method="post">
-    {% csrf_token %} {{ main_form.non_field_errors }}
-    {% for field in signout_form %}
+    {% csrf_token %} {{ signout_form.non_field_errors }} {% for field in signout_form %}
     <div class="mb-3">
       <div class="mb-2">{{ field.label }}</div>
       {{ field }}
     </div>
     {% endfor %}
-    {% if main_form.errors %}
-      {% for field in main_form %}
+    {% if signout_form.errors %}
+      {% for field in signout_form %}
         {% for error in field.errors %} 
           <div class="alert alert-danger">
             <strong>{{ error|escape }}</strong>
