@@ -2,23 +2,19 @@ from django.contrib import admin
 from .models import Site, Visitor, History
 from django.http import HttpResponse
 import csv
+
 class AdminArea(admin.AdminSite):
   site_header = 'UWA Visitor Management System'
   index_title = 'Admin Dashboard'
   site_title = 'UWA VMS'
   
-
 vms_admin = AdminArea(name='vms_admin ')
-
-class HistoryInline(admin.TabularInline):
-  model = History
 
 @admin.register(Site, site=vms_admin)
 class SiteAdmin(admin.ModelAdmin):
   fieldsets = (
     ("Site Details", {'fields': (('name','accomodation'),)}),
   )
-
   list_display = ['name','accomodation']
   list_filter = ('accomodation',)
 
@@ -41,8 +37,8 @@ class VisitorAdmin(admin.ModelAdmin):
     ("Visitor's Contact Information",{
       'fields':(('first_name','last_name'),('email','phone_number'),'role')
     }),
-    ("Visitation Details",{
-      'fields':('planned_checkout','checkout','nightstay')
+    ("Visitation Status",{
+      'fields':('planned_checkout','checkout','nightstay', 'site')
     }),
     ("Visitor's Emergency Contact Information",{
       'fields':(('emergency_first_name','emergency_last_name'),('emergency_phone','emergency_relation'))
@@ -59,11 +55,11 @@ class VisitorAdmin(admin.ModelAdmin):
     'nightstay',
     'emergency_name',
     'emergency_phone',
-    'emergency_relation'
+    'emergency_relation',
+    'site'
   ]
   readonly_fields = ['checkin']
-  list_filter = ('role', 'checkout', 'nightstay', 'checkin', 'planned_checkout')
-  inlines = [HistoryInline]
+  list_filter = ('role', 'checkout', 'nightstay', 'checkin', 'planned_checkout', 'site')
 
   def visitor_name(self, obj):
     return obj.first_name + ' ' + obj.last_name
@@ -80,4 +76,3 @@ class HistoryAdmin(admin.ModelAdmin):
   list_display_links = ['visitor']
   readonly_fields = ['checkin','checkout','nightstay']
   list_filter = ('nightstay',)
-  
