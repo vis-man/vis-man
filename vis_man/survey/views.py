@@ -33,7 +33,6 @@ def signout(request):
 
                 history.save()
                 this_visitor.checkout = True
-                this_visitor.site.delete(site_to_remove)
                 this_visitor.save()
                 return redirect('vis-man-home')
 
