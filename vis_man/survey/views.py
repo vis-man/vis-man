@@ -55,10 +55,15 @@ def forms(request, pk):
 
         visitor_email = main_form['email'].value()
 
+        # check if visitor exists and update main_form accordingly
         if Visitor.objects.filter(email=visitor_email).exists():
             visitor = Visitor.objects.get(email=visitor_email)
             main_form = MainForm(exclude, request.POST, instance=visitor)
-        elif main_form.is_valid():
+        else:
+            main_form = MainForm(exclude, request.POST)
+        
+        # check form is valid: save form if it is
+        if main_form.is_valid():
             visitor = main_form.save()
             visitor.site = site
             visitor.checkout = False
