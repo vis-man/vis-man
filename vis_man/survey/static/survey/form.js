@@ -1,8 +1,7 @@
 
 $("#id_emergency_first_name").parents('div').hide()
 $("#id_emergency_last_name").parents('div').hide()
-$("#id_emergency_phone_0").parents('div').hide()
-$("#id_emergency_phone_1").parents('div').hide()
+$("#id_emergency_phone").parents('div').hide()
 $("#id_emergency_relation").parents('div').hide()
 $("#id_role").parents('div').hide()
 var chosen_role = document.getElementById("id_role_dropdown")
@@ -14,15 +13,13 @@ $("#id_nightstay").click(function(){
     if(checkBox.checked === true) {
         $("#id_emergency_first_name").parents('div').show()
         $("#id_emergency_last_name").parents('div').show()
-        $("#id_emergency_phone_0").parents('div').show()
-        $("#id_emergency_phone_1").parents('div').show()
+        $("#id_emergency_phone").parents('div').show()
         $("#id_emergency_relation").parents('div').show()
     } 
     if(checkBox.checked === false) {
         $("#id_emergency_first_name").parents('div').hide()
         $("#id_emergency_last_name").parents('div').hide()
-        $("#id_emergency_phone_0").parents('div').hide()
-        $("#id_emergency_phone_1").parents('div').hide()
+        $("#id_emergency_phone").parents('div').hide()
         $("#id_emergency_relation").parents('div').hide()
     }
 })
@@ -32,7 +29,8 @@ $("#id_role_dropdown").change(function(){
     document.getElementById("id_role").value = role_text
     if(chosen_role.value === 'other'){
         $("#id_role").parents('div').show()
-        document.getElementById("id_role").value = 'Please Key in Role'
+        document.getElementById("id_role").value = ''
+        document.getElementById("id_role").placeholder = 'Please Key in Role'
     }
     else{
         $("#id_role").parents('div').hide()
