@@ -21,7 +21,6 @@ def signout(request):
         if signout_form.is_valid():
             e = signout_form.cleaned_data['email']
             this_visitor = Visitor.objects.get(email=e)
-            site_to_remove = this_visitor.site
             if not this_visitor.checkout:
                 history = History(
                     checkin = this_visitor.checkin,

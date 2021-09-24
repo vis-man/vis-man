@@ -21,7 +21,7 @@ class SiteAdmin(admin.ModelAdmin):
 @admin.register(Visitor, site=vms_admin)
 class VisitorAdmin(admin.ModelAdmin):
   actions = ["export_as_csv"]
-  def export_as_csv(self, request, queryset):
+  def export_as_csv(self, queryset):
     meta = self.model._meta
     field_names = [field.name for field in meta.fields]
     response = HttpResponse(content_type='text/csv')
