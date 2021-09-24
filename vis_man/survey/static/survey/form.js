@@ -29,7 +29,7 @@ $("#id_role_dropdown").change(function(){
     document.getElementById("id_role").value = role_text
     if(chosen_role.value === 'other'){
         $("#id_role").parents('div').show()
-        document.getElementById("id_role").value = 'Please Key in Role'
+        document.getElementById("id_role").value = ''
     }
     else{
         $("#id_role").parents('div').hide()
