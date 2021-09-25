@@ -1,0 +1,18 @@
+{% extends "survey/base.html" %} 
+{% block content %}
+{% load static %}
+<divclass="d-flex justify-content-center align-items-center">
+  <h1 class="fs-3 text-center text-wrap mt-5 pt-5">{{site.name}}</h1>
+  <div class="d-flex justify-content-center align-items-center min-height-70">
+    <a href="{% url 'signout'%}" class="card d-flex flex-column align-items-center justify-content-md-center text-decoration-none mx-5 card-width" style="width: 18rem; border-radius: 15%">
+      <img src="{% static 'survey/logout.png' %}" class="card-img-top px-4 pt-3 img-fluid img-rmv" alt="...">
+      <h3 class='text-dark py-2 text-center txt-sm'>Sign Out</h3>
+    </a>
+    <a href="{% url 'forms' site.id%}" class="card d-flex flex-column align-items-center justify-content-md-center text-decoration-none mx-5 card-width" style="width: 18rem; border-radius: 15%">
+      <img src="{% static 'survey/login.png' %}" class="card-img-top px-4 pt-3 img-fluid img-rmv" alt="...">
+      <h3 class='text-dark py-2 text-center txt-sm'>Sign In</h3>
+
+    </a>
+  </div>
+</divclass=>
+{% endblock content %}
