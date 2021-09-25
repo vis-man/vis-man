@@ -11,6 +11,7 @@
     py-5
   "
 >
+  <h1 class="fs-3 text-center text-wrap mb-5 pb-5">{{site.name}}</h1>
   <form action="" method="post">
     {% csrf_token %} {{ main_form.non_field_errors }} {% for field in main_form %}
     <div class="mb-3">

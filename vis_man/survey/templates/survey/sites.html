@@ -8,11 +8,11 @@
     min-height-80
   "
 >
-  <h1 class="mb-5 mt-auto pt-5">Which Site Are You Planning to Visit?</h1>
+  <h1 class="mb-5 mt-auto pt-5">Select a Site</h1>
   <div class="list-group mb-auto py-5 mt-4">
     {% for site in sites %}
     <a
-      href="{% url 'vis-man-forms' site.id%}"
+      href="{% url 'enter_exit' site.id%}"
       class="list-group-item my-2 py-2 rounded-3"
       aria-current="true"
       >{{site.name}}

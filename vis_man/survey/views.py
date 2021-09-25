@@ -3,8 +3,11 @@ from .models import Site, Visitor, History
 from .forms import MainForm, Signout
 from datetime import datetime
 
-def home(request):
-    return render(request, 'survey/home.html')
+def enter_exit(request, pk):
+    context = {
+        'site':Site.objects.get(id=pk),
+    }
+    return render(request, 'survey/enter_exit.html', context)
 
 def sites(request):
     context = {
@@ -33,7 +36,8 @@ def signout(request):
                 history.save()
                 this_visitor.checkout = True
                 this_visitor.save()
-                return redirect('vis-man-home')
+                pk = this_visitor.site.id
+                return redirect('enter_exit', pk=pk)
 
     context = {
         'signout_form': signout_form
@@ -67,7 +71,10 @@ def forms(request, pk):
             visitor.site = site
             visitor.checkout = False
             visitor.save()
-            return redirect('vis-man-home')
+            context = {
+                'pk': pk
+            }
+            return redirect('enter_exit', pk=pk)
 
     context = {
         'site':site,

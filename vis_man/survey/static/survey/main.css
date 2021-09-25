@@ -3,6 +3,10 @@
   min-height: 80vh;
 }
 
+.min-height-70 {
+  min-height: 70vh;
+}
+
 /* Visual Effects */
 .card:hover {
   transform: scale(1.05);
@@ -18,4 +22,17 @@
 .disable-scrollbars {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .txt-sm {
+    font-size: smaller;
+  }
+}
+
+@media (max-width: 200px) {
+  .img-rmv {
+    display: none;
+  }
 }
