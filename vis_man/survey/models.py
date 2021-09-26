@@ -28,7 +28,7 @@ class Visitor(models.Model):
   checkout = models.BooleanField(default=False)
   emergency_first_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
-  emergency_phone = PhoneNumberField(null=False, blank=False)
+  emergency_phone = PhoneNumberField(null=True, blank=True)
   emergency_phone.error_messages['invalid'] = "Enter a valid emergency number"
   emergency_relation = models.CharField(max_length=50, null=True, blank=True)
 
