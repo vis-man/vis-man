@@ -4,6 +4,10 @@
 Check you have at least Python 3 (should have 3.8.x):
 
     python --version
+    
+To install required packages from requirements.txt
+
+    pip install -r requirements.txt
 
 Install Django:
 
@@ -36,4 +40,9 @@ Note that, the way Django works, there can be multiple 'apps' within a 'project'
 *vis_man/* is the directory for the entire project.
 
 *survey/* is the directory for the survey app specifically.
+
+## DB migrations
+To perform DB migration
+python manage.py makemigrations
+python manage.py migrate
 

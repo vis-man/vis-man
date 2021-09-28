@@ -1,0 +1,14 @@
+**Steps have been tested on Windows 10. (Not on VM or WSL). And Android phone.
+1> Find IPaddr of your machine on windows this can be done by typing 'ipconfig'.
+2> Record you IPv4 addr - > 
+	IPv4 Address. . . . . . . . . . . : 192.168.10.102. 
+	Note that is the IPv4 for my Wireless LAN adapter.
+3> Now under Django project - open settigs.py and add your machine IP to ALLOWED_HOSTS.
+	eg. ALLOWED_HOSTS = ['192.168.10.102']
+4> Start Django server with 
+	python manage.py runserver 192.168.10.102:7000
+	So here it is runserver MACHINE_IP:PORT
+	Port can be 8000, 7000 etc.
+5> On mobile phone enter MACHINE_IP:PORT
+	eg 192.168.10.102:7000
+6> Connection should be established.
