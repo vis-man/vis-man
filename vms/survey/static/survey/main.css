@@ -1,4 +1,8 @@
 /* Sizing */
+html,
+body {
+  height: 100%;
+}
 .min-height-80 {
   min-height: 80vh;
 }
@@ -33,6 +37,13 @@
 @media (max-width: 600px) {
   .txt-sm {
     font-size: smaller;
+  }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 
