@@ -37,3 +37,19 @@ $("#id_role_dropdown").change(function(){
     }
     
 })
+
+let f = navigator.userAgent.search("Firefox");
+
+console.log(f > -1)
+
+if (f > -1) {
+    config = {
+        enableTime: true,
+        enableSeconds: true,
+        dateFormat: "Y-m-d H:i:s",
+    }
+    flatpickr("input[type=datetime-local]", config);
+}
+
+
+
