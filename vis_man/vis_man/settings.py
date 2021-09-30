@@ -14,6 +14,7 @@ SECRET_KEY = 'django-insecure-7brd^o)pcf)$m^#co-+hg(*g(x=$y6__drbddwyisb+&z@y7g$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# May need to add your machine IP here to allow external devices to connect.
 ALLOWED_HOSTS = []
 
 # Application definition
