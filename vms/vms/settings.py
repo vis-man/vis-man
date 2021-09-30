@@ -1,12 +1,7 @@
-import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-7brd^o)pcf)$m^#co-+hg(*g(x=$y6__drbddwyisb+&z@y7g$'
@@ -40,7 +35,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware'
 ]
 
-ROOT_URLCONF = 'vis_man.urls'
+ROOT_URLCONF = 'vms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -57,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'vis_man.wsgi.application'
+WSGI_APPLICATION = 'vms.wsgi.application'
 
 
 # Database
@@ -114,5 +109,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PHONENUMBER_DB_FORMAT = 'NATIONAL'
-PHONENUMBER_DEFAULT_REGION = 'AU'
+# PHONENUMBER_DB_FORMAT = 'NATIONAL'
+# PHONENUMBER_DEFAULT_REGION = 'AU'

@@ -1,1 +1,0 @@
-web: gunicorn vis_man.wsgi --log-file -

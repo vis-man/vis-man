@@ -1,4 +1,4 @@
-# vis-man
+# vms
 
 ## Project Overview
 
