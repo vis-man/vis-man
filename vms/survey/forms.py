@@ -2,7 +2,8 @@ from django import forms
 from django.core.exceptions import ValidationError
 from .models import Visitor
 
-class MainForm(forms.ModelForm):
+class Sign_in_Form(forms.ModelForm):
+    # Visitor roles
     role_choices = (('staff', 'UWA Staff'),
                     ('student', 'UWA Student'),
                     ('other_staff', 'Other University staff'),
@@ -12,12 +13,12 @@ class MainForm(forms.ModelForm):
 
     role_dropdown = forms.CharField(label='Select Role', initial=('staff', 'UWA Staff'), widget=forms.Select(choices=role_choices, attrs={'class': 'form-control'}))
 
+    # Custom cleaning function that is called during 'sign_in_form.is_valid()' in views.py
     def clean(self):
-        cleaned_data = super(MainForm, self).clean()
+        cleaned_data = super(Sign_in_Form, self).clean()
         this_email = cleaned_data.get('email')
-
-        if Visitor.objects.filter(email=this_email).exists():
-            this_visitor = Visitor.objects.filter(email=this_email).first()
+        this_visitor = Visitor.objects.filter(email=this_email).first()
+        if this_visitor:
             checked_out = this_visitor.checkout
             if not checked_out:
                 raise ValidationError("You are already checked in. Please check out to continue.")
@@ -70,7 +71,7 @@ class MainForm(forms.ModelForm):
         }
 
     def __init__(self, exclude, *args, **kwargs):
-        super(MainForm, self).__init__(*args, **kwargs)
+        super(Sign_in_Form, self).__init__(*args, **kwargs)
         self.order_fields(['first_name',
                        'last_name',
                        'email',
@@ -90,21 +91,20 @@ class MainForm(forms.ModelForm):
             del self.fields['emergency_phone']
             del self.fields['emergency_relation']
 
-class Signout(forms.Form):
+class Sign_out_Form(forms.Form):
     email = forms.EmailField(label='Email')
     email.widget.attrs.update({'class': 'form-control'})
 
-    # custom cleaning function that is called during 'form.is_valid()' in views.py
+    # custom cleaning function that is called during 'sign_out_form.is_valid()' in views.py
     def clean(self):
-        cleaned_data = super(Signout, self).clean()
+        cleaned_data = super(Sign_out_Form, self).clean()
         this_email = cleaned_data.get('email')
 
-        if not Visitor.objects.filter(email=this_email).exists():
+        visitor = Visitor.objects.filter(email=this_email).first()
+        if not visitor:
             raise ValidationError("Please enter the correct credentials.")
         else:
-            this_visitor = Visitor.objects.filter(email=this_email).first()
-            checked_out = this_visitor.checkout
-
+            checked_out = visitor.checkout
             if checked_out:
                 raise ValidationError("You are already checked out.")
 
