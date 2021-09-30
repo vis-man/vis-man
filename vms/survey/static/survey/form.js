@@ -37,3 +37,12 @@ $("#id_role_dropdown").change(function(){
     }
     
 })
+
+// for datepicker
+config = {
+    enableTime: true,
+    enableSeconds: true,
+    dateFormat: "Y-m-d H:i",
+}
+flatpickr("input[type=datetime-local]", config);
+
