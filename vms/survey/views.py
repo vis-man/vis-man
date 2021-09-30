@@ -1,84 +1,82 @@
 from django.shortcuts import redirect, render
 from .models import Site, Visitor, History
-from .forms import MainForm, Signout
+from .forms import Sign_in_Form, Sign_out_Form
 from datetime import datetime
 
+'''Sign-on/Sign-out page'''
 def enter_exit(request, pk):
     context = {
         'site':Site.objects.get(id=pk),
     }
     return render(request, 'survey/enter_exit.html', context)
 
+'''Main page which shows list of sites'''
 def sites(request):
     context = {
-        'title': 'Visitor Management System',
         'sites': Site.objects.all()
     }
     return render(request, 'survey/sites.html', context)
 
-def signout(request):
-    signout_form = Signout()
-    
+'''Sign-out page to checkout visitors'''
+def sign_out(request):  
+    sign_out_form = Sign_out_Form()
     if request.method == 'POST':
-        signout_form = Signout(request.POST)
-        if signout_form.is_valid():
-            e = signout_form.cleaned_data['email']
+        sign_out_form = Sign_out_Form(request.POST)
+        # If not error with the email and user exists, proceed.
+        if sign_out_form.is_valid():
+            # Find the visitor with that email
+            e = sign_out_form.cleaned_data['email']
             this_visitor = Visitor.objects.get(email=e)
-            if not this_visitor.checkout:
-                history = History(
-                    checkin = this_visitor.checkin,
-                    checkout = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    site = this_visitor.site,
-                    nightstay = this_visitor.nightstay,
-                    visitor = this_visitor
-                )
-
-                history.save()
-                this_visitor.checkout = True
-                this_visitor.save()
-                pk = this_visitor.site.id
-                return redirect('enter_exit', pk=pk)
-
+            # Add visitors stay details to history
+            history = History(
+                checkin = this_visitor.checkin,
+                checkout = datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                site = this_visitor.site,
+                nightstay = this_visitor.nightstay,
+                visitor = this_visitor
+            )
+            history.save()
+            # Checkout visitor
+            this_visitor.checkout = True
+            this_visitor.save()
+            pk = this_visitor.site.id
+            return redirect('enter_exit', pk=pk)
+    # If request is GET just render the form and Sign out page    
     context = {
-        'signout_form': signout_form
+        'sign_out_form': sign_out_form
     }
-    return render(request, 'survey/signout.html', context)
+    return render(request, 'survey/sign_out.html', context)
 
-def forms(request, pk):
+'''Sign-in form to checkin visitors'''
+def sign_in(request, pk):
     site = Site.objects.get(id=pk)
     accomodation = site.accomodation
     exclude = {
         'accomodation': accomodation
     }
-
-    main_form = MainForm(exclude)
-    
+    # if site does not have an accomodation, we shouldn't ask if visitor wants to
+    # stay overnight. We pass this information to the form, via exclude.
+    sign_in_form = Sign_in_Form(exclude)
     if request.method == 'POST':
-        main_form = MainForm(exclude, request.POST)
-
-        visitor_email = main_form['email'].value()
-
-        # check if visitor exists and update main_form accordingly
-        if Visitor.objects.filter(email=visitor_email).exists():
-            visitor = Visitor.objects.get(email=visitor_email)
-            main_form = MainForm(exclude, request.POST, instance=visitor)
-        else:
-            main_form = MainForm(exclude, request.POST)
-        
-        # check form is valid: save form if it is
-        if main_form.is_valid():
-            visitor = main_form.save()
+        sign_in_form = Sign_in_Form(exclude, request.POST)
+        e = sign_in_form['email'].value()
+        # Check if visitor already exists in the database. If yes, just update 
+        # Their details and check them in.
+        if Visitor.objects.filter(email=e).exists():
+            visitor = Visitor.objects.get(email=e)
+            sign_in_form = Sign_in_Form(exclude, request.POST, instance=visitor)
+        # sign_in_form now either has a new user or an existing user. So, now
+        # we just save their information and check them in to the relevant site.
+        if sign_in_form.is_valid():
+            visitor = sign_in_form.save()
             visitor.site = site
             visitor.checkout = False
             visitor.save()
-            context = {
-                'pk': pk
-            }
             return redirect('enter_exit', pk=pk)
-
+    
     context = {
         'site':site,
-        'main_form': main_form
+        'sign_in_form': sign_in_form
     }
-    return render(request, 'survey/form.html', context)
+    return render(request, 'survey/sign_in.html', context)
     
