@@ -62,6 +62,8 @@ class VisitorAdmin(admin.ModelAdmin):
   ]
   readonly_fields = ['checkin', 'checkout']
   list_filter = ('role', 'checkout', 'nightstay', 'checkin', 'planned_checkout', 'site')
+  
+  search_fields =["first_name", "last_name", "email"]
 
   '''Combines first and last name to make a fullname'''
   def visitor_name(self, obj):
@@ -76,6 +78,7 @@ class VisitorAdmin(admin.ModelAdmin):
 @admin.register(History, site=vms_admin)
 class HistoryAdmin(admin.ModelAdmin):
   actions = ["export_as_csv"]
+  search_fields =["visitor__first_name", "visitor__last_name"]
   # defining a django action function to export visitor data to a csv file
   def export_as_csv(self, queryset):
     meta = self.model._meta
