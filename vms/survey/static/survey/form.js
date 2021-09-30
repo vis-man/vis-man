@@ -42,7 +42,9 @@ $("#id_role_dropdown").change(function(){
 config = {
     enableTime: true,
     enableSeconds: true,
-    dateFormat: "Y-m-d H:i",
+    dateFormat: "Y-m-d H:i:s",
 }
 flatpickr("input[type=datetime-local]", config);
+
+
 
