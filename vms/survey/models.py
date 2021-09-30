@@ -55,4 +55,6 @@ class History(models.Model):
     verbose_name_plural = ("Histories")
   
   def __str__(self):
-    return str(self.id)
+    duration = str(self.checkout - self.checkin)
+    duration = duration.split(':')
+    return "Visit Duration: " + duration[0] + " hours and " + duration[1] + " Minutes"

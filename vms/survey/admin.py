@@ -40,7 +40,7 @@ class VisitorAdmin(admin.ModelAdmin):
       'fields':(('first_name','last_name'),('email','phone_number'),'role')
     }),
     ("Visitation Status",{
-      'fields':('planned_checkout','checkout','nightstay', 'site')
+      'fields':('checkin','planned_checkout','checkout','nightstay', 'site')
     }),
     ("Visitor's Emergency Contact Information",{
       'fields':(('emergency_first_name','emergency_last_name'),('emergency_phone','emergency_relation'))
@@ -60,7 +60,7 @@ class VisitorAdmin(admin.ModelAdmin):
     'emergency_relation',
     'site'
   ]
-  readonly_fields = ['checkin']
+  readonly_fields = ['checkin', 'checkout']
   list_filter = ('role', 'checkout', 'nightstay', 'checkin', 'planned_checkout', 'site')
 
   '''Combines first and last name to make a fullname'''
@@ -90,5 +90,5 @@ class HistoryAdmin(admin.ModelAdmin):
   export_as_csv.short_description = "Export Selected"
   list_display = ['visitor', 'checkin', 'checkout', 'nightstay']
   list_display_links = ['visitor']
-  readonly_fields = ['checkin','checkout','nightstay']
+  readonly_fields = ['site', 'visitor', 'checkin','checkout','nightstay']
   list_filter = ('nightstay',)
