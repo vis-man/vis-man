@@ -6,30 +6,30 @@
 
 /* VARIABLE DEFINITIONS */
 :root {
-  --primary: #79aec8;
+  --primary: #495057;
   --secondary: #212529;
-  --accent: #f5dd5d;
-  --primary-fg: #fff;
+  --accent: #f8f9fa;
+  --primary-fg: #fffcf2;
 
   --body-fg: #333;
   --body-bg: #fff;
-  --body-quiet-color: #666;
+  --body-quiet-color: #495057;
   --body-loud-color: #000;
 
-  --header-color: #ffc;
+  --header-color: #fdf0d5;
   --header-branding-color: var(--accent);
   --header-bg: var(--secondary);
   --header-link-color: var(--primary-fg);
 
-  --breadcrumbs-fg: #c4dce8;
-  --breadcrumbs-link-fg: var(--body-bg);
+  --breadcrumbs-fg: var(--header-color);
+  --breadcrumbs-link-fg: #ffffff;
   --breadcrumbs-bg: var(--primary);
 
-  --link-fg: #447e9b;
-  --link-hover-color: #036;
-  --link-selected-fg: #5b80b2;
+  --link-fg: #2181a7;
+  --link-hover-color: #19a39c;
+  --link-selected-fg: #19a39c;
 
-  --hairline-color: #e8e8e8;
+  --hairline-color: #f7f7f7;
   --border-color: #ccc;
 
   --error-fg: #ba2121;
@@ -40,11 +40,11 @@
 
   --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
   --selected-bg: #e4e4e4; /* E.g. selected table cells */
-  --selected-row: #ffc;
+  --selected-row: #e9ecef;
 
   --button-fg: #fff;
   --button-bg: var(--primary);
-  --button-hover-bg: #609ab6;
+  --button-hover-bg: var(--secondary);
   --default-button-bg: var(--secondary);
   --default-button-hover-bg: #205067;
   --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
