@@ -137,6 +137,7 @@ input[type="submit"], button {
 
   #changelist .actions.selected {
       border: none;
+      font-weight: bold;
   }
 
   #changelist .actions label {
