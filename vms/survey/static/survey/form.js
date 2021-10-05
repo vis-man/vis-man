@@ -37,17 +37,14 @@ $("#id_role_dropdown").change(function(){
     }
     
 })
-console.log('*** Display Browser Agent ***')
-console.log(navigator.userAgent)
 let f = navigator.userAgent.search("Firefox");
 let s = navigator.userAgent.search("Safari");
 let c = navigator.userAgent.search("Chrome");
 
 if (c > -1) {
-    console.log('***Chrome***')
+    c = 1
 }
 else if (f > -1) {
-    console.log('***Firefox***')
     config = {
         enableTime: true,
         enableSeconds: true,
@@ -56,7 +53,6 @@ else if (f > -1) {
     flatpickr("input[type=datetime-local]", config);
 }
 else if (s > -1) {
-    console.log('***Safari***')
     config = {
         enableTime: true,
         enableSeconds: true,
