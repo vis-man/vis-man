@@ -9,8 +9,10 @@ def deleteRecord():
         # Deleting single record now
         # Script can be executed as a scheduled task via Task Scheduler (Windows) or Cron (Unix)
         # Delete records of visitors older than 3 years (365 x 3 =1095)
-        sql_delete_query = """DELETE FROM survey_visitor WHERE checkin < date('now', '-1095 day')"""
-        cursor.execute(sql_delete_query)
+        sql_delete_visitor = """DELETE FROM survey_visitor WHERE checkin < date('now', '-2 day')"""
+        sql_delete_history = """DELETE FROM survey_history WHERE checkin < date('now', '-2 day')"""
+        cursor.execute(sql_delete_visitor)
+        cursor.execute(sql_delete_history)
         sqliteConnection.commit()
         print("Record deleted successfully ")
         cursor.close()
