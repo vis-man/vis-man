@@ -71,6 +71,7 @@ def sign_in(request, pk):
             visitor = sign_in_form.save()
             visitor.site = site
             visitor.checkout = False
+            visitor.checkin = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             visitor.save()
             return redirect('enter_exit', pk=pk)
     

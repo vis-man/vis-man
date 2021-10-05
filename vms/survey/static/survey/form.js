@@ -37,12 +37,22 @@ $("#id_role_dropdown").change(function(){
     }
     
 })
-
 let f = navigator.userAgent.search("Firefox");
+let s = navigator.userAgent.search("Safari");
+let c = navigator.userAgent.search("Chrome");
 
-console.log(f > -1)
-
-if (f > -1) {
+if (c > -1) {
+    c = 1
+}
+else if (f > -1) {
+    config = {
+        enableTime: true,
+        enableSeconds: true,
+        dateFormat: "Y-m-d H:i:s",
+    }
+    flatpickr("input[type=datetime-local]", config);
+}
+else if (s > -1) {
     config = {
         enableTime: true,
         enableSeconds: true,
