@@ -1,4 +1,4 @@
-# vms
+# Visitor Management System
 
 ## Project Overview
 
@@ -46,4 +46,3 @@ Once you have all the required dependiencies, you can go ahead and run the app l
 ```shell
 ./scripts/run.sh
 ```
-````
