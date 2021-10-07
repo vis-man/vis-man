@@ -1,4 +1,4 @@
-{% extends "survey/base.html" %} {% block content %}
+{% extends "survey/base.html" %} {% block content %} 
 <div
   class="
     form-group
@@ -12,7 +12,7 @@
   "
 >
   <h1 class="fs-3 text-center text-wrap mb-5 pb-5">{{site.name}}</h1>
-  <form action="" method="post" id="in_form">
+  <form id="in_form" action="" method="post">
     {% csrf_token %}{% for field in sign_in_form %}
     <div class="mb-3">
       <div class="mb-2">{{ field.label }}</div>

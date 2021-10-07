@@ -61,19 +61,22 @@ else if (s > -1) {
     flatpickr("input[type=datetime-local]", config);
 }
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
+// const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top',
+//     showConfirmButton: false,
+//     timer: 3000,
+//     timerProgressBar: true,
+//     didOpen: (toast) => {
+//         toast.addEventListener('mouseenter', Swal.stopTimer)
+//         toast.addEventListener('mouseleave', Swal.resumeTimer)
+//     }
+// })
 
-console.log("Test");
+// Toast.fire({
+//     icon: 'success',
+//     title: 'Signed in successfully'
+//     })
 
 // $("#in_form").onsubmit = function() {myFunction()}
 // $("#out_form").onsubmit = function() {myFunction()}
@@ -94,12 +97,12 @@ console.log("Test");
 
 
 
-document.getElementById("#in_form").addEventListener("submit", myFunction2);
-document.getElementById("#out_form").addEventListener("submit", myFunction2);
+// document.getElementById("#in_form").addEventListener("submit", myFunction2);
+// document.getElementById("#out_form").addEventListener("submit", myFunction2);
 
-function myFunction2() {
-    alert("The form was submitted");
-    console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-}
+// function myFunction2() {
+//     alert("The form was submitted");
+//     console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+// }
 
 

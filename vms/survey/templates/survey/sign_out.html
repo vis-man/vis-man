@@ -9,7 +9,7 @@
     min-height-80
   "
 >
-  <form action="" method="post" id="out_form">
+  <form id="out_form" action="" method="post">
     {% csrf_token %} {% for field in sign_out_form %}
     <div class="mb-3">
       <div class="mb-2">{{ field.label }}</div>
@@ -28,4 +28,33 @@
     <input type="submit" value="Sign Out" class="btn btn-dark" />
   </form>
 </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+})
+
+document.getElementById("out_form").addEventListener("submit", myFunction2);
+
+function myFunction2() {
+    console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+    Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully'
+    })
+}
+
+</script>
+
 {% endblock content %}
+
