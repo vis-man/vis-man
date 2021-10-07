@@ -29,32 +29,5 @@
   </form>
 </div>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script>
-    const Toast = Swal.mixin({
-    toast: true,
-    position: 'top',
-    showConfirmButton: false,
-    timer: 5000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
-
-document.getElementById("out_form").addEventListener("submit", myFunction2);
-
-function myFunction2() {
-    console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-    Toast.fire({
-    icon: 'success',
-    title: 'Signed in successfully'
-    })
-}
-
-</script>
-
 {% endblock content %}
 
