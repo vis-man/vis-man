@@ -12,7 +12,7 @@
   "
 >
   <h1 class="fs-3 text-center text-wrap mb-5 pb-5">{{site.name}}</h1>
-  <form action="" method="post">
+  <form action="" method="post" id="in_form">
     {% csrf_token %}{% for field in sign_in_form %}
     <div class="mb-3">
       <div class="mb-2">{{ field.label }}</div>
@@ -37,4 +37,5 @@
   </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 {% endblock content %}

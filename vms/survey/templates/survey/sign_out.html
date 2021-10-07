@@ -9,7 +9,7 @@
     min-height-80
   "
 >
-  <form action="" method="post">
+  <form action="" method="post" id="out_form">
     {% csrf_token %} {% for field in sign_out_form %}
     <div class="mb-3">
       <div class="mb-2">{{ field.label }}</div>
