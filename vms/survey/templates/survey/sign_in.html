@@ -1,6 +1,5 @@
-{% extends "survey/base.html" %} {% block content %} 
-<div
-  class="
+{% extends "survey/base.html" %} {% block content %}
+<div class="
     form-group
     d-flex
     flex-column
@@ -9,8 +8,7 @@
     min-height-80
     my-5
     py-5
-  "
->
+  ">
   <h1 class="fs-3 text-center text-wrap mb-5 pb-5">{{site.name}}</h1>
   <form id="in_form" action="" method="post">
     {% csrf_token %}{% for field in sign_in_form %}
@@ -20,18 +18,18 @@
     </div>
     {% endfor %}
     {% if sign_in_form.errors %}
-        {% for field in sign_in_form %}
-            {% for error in field.errors %}
-                <div class="alert alert-danger">
-                    <strong>{{ error|escape }}</strong>
-                </div>
-            {% endfor %}
-        {% endfor %}
-        {% for error in sign_in_form.non_field_errors %}
-            <div class="alert alert-danger">
-                <strong>{{ error|escape }}</strong>
-            </div>
-        {% endfor %}
+    {% for field in sign_in_form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in sign_in_form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
     {% endif %}
     <input type="submit" value="Submit" class="btn btn-dark">
   </form>

@@ -1,14 +1,12 @@
 {% extends "survey/base.html" %} {% block content %}
-<div
-  class="
+<div class="
     form-group
     d-flex
     flex-column
     align-items-center
     justify-content-center
     min-height-80
-  "
->
+  ">
   <form id="out_form" action="" method="post">
     {% csrf_token %} {% for field in sign_out_form %}
     <div class="mb-3">
@@ -30,4 +28,3 @@
 </div>
 
 {% endblock content %}
-
