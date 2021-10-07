@@ -8,15 +8,24 @@
     min-height-80
   "
 >
-  <div class="d-flex flex-column justify-content-center align-items-center text-center">
-    <h1 class="mb-5 mt-auto pt-5">Welcome to The University of Western Australia</h1>
-    <h4 class="mb-5 pt-5">Choose a Site</h4>
+  <div
+    class="
+      d-flex
+      flex-column
+      justify-content-center
+      align-items-center
+      text-center
+    "
+  >
+    <h1 class="mb-1 mt-auto pt-5">Welcome</h1>
+    <h1 class="mb-1">to</h1>
+    <h1 class="mb-3 pb-5">The University of Western Australia</h1>
   </div>
   <div class="list-group mb-auto py-5 mt-4">
     {% for site in sites %}
     <a
       href="{% url 'enter_exit' site.id%}"
-      class="list-group-item my-2 py-2 rounded-3"
+      class="list-group-item my-2 py-2 rounded-3 box-shadow text-center"
       aria-current="true"
       >{{site.name}}
     </a>
