@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 from .models import Site, Visitor, History
 from django.http import HttpResponse
 import csv
@@ -95,3 +96,35 @@ class HistoryAdmin(admin.ModelAdmin):
   list_display_links = ['visitor']
   readonly_fields = ['site', 'visitor', 'checkin','checkout','nightstay']
   list_filter = ('nightstay',)
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+  pass
+  # list_display = [
+  #     'username',
+  #     'first_name',
+  #     'last_name',
+  #     'email',
+  #     'is_superuser',
+  #     'is_active',
+  #     'is_staff',
+  #     'last_login'
+  # ]
+
+  # fieldsets = (
+  #   ("User Details",{
+  #     'fields':(('first_name','last_name'),('email', 'username'), 'password','last_login', 'date_joined')
+  #   }),
+  #   ("Permissions",{
+  #     'fields':('user_permissions','is_superuser', 'is_staff', 'is_active')
+  #   })
+  # )
+
+  # add_fieldsets = (
+  #   (None, {
+  #     'classes': ('wide',),
+  #     'fields': ('email', 'password1', 'password2')}
+  #   ),
+  # )
+
+  # readonly_fields = ['last_login', 'date_joined']
