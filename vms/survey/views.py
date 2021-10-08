@@ -49,7 +49,7 @@ def sign_out(request):
             this_visitor.checkout = True
             this_visitor.save()
             pk = this_visitor.site.id
-            messages.success(request, 'Logout Successfully')
+            messages.success(request, 'Signed out successfully')
             return redirect('enter_exit', pk=pk)
     # If request is GET just render the form and Sign out page
     context = {
@@ -86,7 +86,7 @@ def sign_in(request, pk):
             visitor.checkout = False
             visitor.checkin = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             visitor.save()
-            messages.success(request, 'Login Successfully')
+            messages.success(request, 'Signed in Successfully.')
             return redirect('enter_exit', pk=pk)
 
     context = {

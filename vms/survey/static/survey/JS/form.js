@@ -61,26 +61,26 @@ else if (s > -1) {
     flatpickr("input[type=datetime-local]", config);
 }
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top',
-    showConfirmButton: false,
-    timer: 5000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
+// const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top',
+//     showConfirmButton: false,
+//     timer: 5000,
+//     timerProgressBar: true,
+//     didOpen: (toast) => {
+//         toast.addEventListener('mouseenter', Swal.stopTimer)
+//         toast.addEventListener('mouseleave', Swal.resumeTimer)
+//     }
+// })
 
-document.getElementById("out_form").addEventListener("submit", myFunction2);
+// document.getElementById("out_form").addEventListener("submit", myFunction2);
 
-function myFunction2() {
-    console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-    Toast.fire({
-    icon: 'success',
-    title: 'Signed in successfully'
-    })
-}
+// function myFunction2() {
+//     console.log("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+//     Toast.fire({
+//     icon: 'success',
+//     title: 'Signed in successfully'
+//     })
+// }
 
 

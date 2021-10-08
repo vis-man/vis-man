@@ -1,4 +1,11 @@
 {% extends "survey/base.html" %} {% block content %} {% load static %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
 <h1 class="fs-3 text-center text-wrap mt-5 pt-5">{{site.name}}</h1>
 <div class="
     container-sm
@@ -7,7 +14,6 @@
     align-items-center
     min-height-70
   ">
-
   <a role="button" class="btn btn-outline-danger btn-lg" href="{% url 'sign_out'%}">
     <div class="button-size d-flex justify-content-center align-items-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-left m-2" viewBox="0 0 16 16">
@@ -26,4 +32,11 @@
     </div>
   </a>
 </div>
+<script>
+  setTimeout(function () {
+    if ($('#msg').length > 0) {
+      $('#msg').remove();
+    }
+  }, 3000)
+</script>
 {% endblock content %}
