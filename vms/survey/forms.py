@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from .models import Visitor
 
+
 class Sign_in_Form(forms.ModelForm):
     # Visitor roles
     role_choices = (('staff', 'UWA Staff'),
