@@ -15,7 +15,7 @@ admin.site.unregister(User)
 # Django Admin Model Registerations and Customizations
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-  def export_as_csv(self, queryset):
+  def export_as_csv(self, request, queryset):
     meta = self.model._meta
     field_names = [field.name for field in meta.fields]
     response = HttpResponse(content_type='text/csv')
@@ -70,6 +70,21 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(Site)
 class SiteAdmin(admin.ModelAdmin):
+  # defining a django action function to export visitor data to a csv file
+  def export_as_csv(self, request, queryset):
+    meta = self.model._meta
+    field_names = [field.name for field in meta.fields]
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
+    writer = csv.writer(response)
+    writer.writerow(field_names)
+    for obj in queryset:
+      writer.writerow([getattr(obj, field) for field in field_names])
+    return response
+  export_as_csv.short_description = "Export Selected"
+
+  actions = ["export_as_csv"]
+  
   fieldsets = (
     ("Site Details", {'fields': (('name','accomodation'),)}
     ),
@@ -81,7 +96,7 @@ class SiteAdmin(admin.ModelAdmin):
 @admin.register(Visitor)
 class VisitorAdmin(admin.ModelAdmin):
   # defining a django action function to export visitor data to a csv file
-  def export_as_csv(self, queryset):
+  def export_as_csv(self, request, queryset):
     meta = self.model._meta
     field_names = [field.name for field in meta.fields]
     response = HttpResponse(content_type='text/csv')
@@ -138,8 +153,8 @@ class VisitorAdmin(admin.ModelAdmin):
 
 @admin.register(History)
 class HistoryAdmin(admin.ModelAdmin):
-  # defining a django action function to export visitor data to a csv file
-  def export_as_csv(self, queryset):
+  # defining a django action function to export history data to a csv file
+  def export_as_csv(self, request, queryset):
     meta = self.model._meta
     field_names = [field.name for field in meta.fields]
     response = HttpResponse(content_type='text/csv')
