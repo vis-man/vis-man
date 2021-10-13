@@ -19,10 +19,7 @@ class Visitor(models.Model):
   first_name = models.CharField(max_length=50, null=False, blank=False)
   last_name = models.CharField(max_length=50, null=False, blank=False)
   email = models.EmailField(max_length=200, null=False, blank=False, unique=True)
-  # Phone number must be Australian (eg. 0423 242 257, or have an international 
-  # prefix infront +61 423 242 257)
-  phone_number = PhoneNumberField(null=False, blank=False)
-  phone_number.error_messages['invalid'] = 'Enter a valid phone number'
+  phone_number = models.CharField(max_length=16, null=False, blank=False)
   role = models.CharField(max_length=100, null=False, blank=False)
   nightstay = models.BooleanField(default=False)
   checkin = models.DateTimeField(default=datetime.now().strftime("%Y-%m-%d %H:%M:%S"), editable=False)
@@ -35,8 +32,7 @@ class Visitor(models.Model):
   checkout = models.BooleanField(default=False)
   emergency_first_name = models.CharField(max_length=50, null=True, blank=True)
   emergency_last_name = models.CharField(max_length=50, null=True, blank=True)
-  emergency_phone = PhoneNumberField(null=True, blank=True)
-  emergency_phone.error_messages['invalid'] = "Enter a valid emergency number"
+  emergency_phone = models.CharField(max_length=16, null=True, blank=True)
   emergency_relation = models.CharField(max_length=50, null=True, blank=True)
 
   def __str__(self):

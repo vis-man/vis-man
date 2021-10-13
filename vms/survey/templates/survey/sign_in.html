@@ -17,6 +17,7 @@
       {{ field }}
     </div>
     {% endfor %}
+
     {% if sign_in_form.errors %}
     {% for field in sign_in_form %}
     {% for error in field.errors %}
@@ -31,6 +32,7 @@
     </div>
     {% endfor %}
     {% endif %}
+
     <input type="submit" value="Submit" class="btn btn-dark">
   </form>
 </div>
