@@ -17,15 +17,14 @@
       {{ field }}
     </div>
     {% endfor %}
-    {% if sign_in_form.errors %}
-    {% for field in sign_in_form %}
+
+    {% if main_form.errors %}
     {% for error in field.errors %}
     <div class="alert alert-danger">
       <strong>{{ error|escape }}</strong>
     </div>
     {% endfor %}
-    {% endfor %}
-    {% for error in sign_in_form.non_field_errors %}
+    {% for error in main_form.non_field_errors %}
     <div class="alert alert-danger">
       <strong>{{ error|escape }}</strong>
     </div>
