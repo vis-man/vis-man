@@ -25,9 +25,12 @@ var day = today.getDate()
 if (today.getHours() >= 17) {
     day = today.getDate() + 1
 }
+
 var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day;
-var time = "17" + ":" + "00" + ":" + "0";
-var dateTime = date + ' ' + time;
+var time = "17" + ":" + "00" + ":" + "00"
+var dateTime = date + 'T' + time;
+
+document.getElementById("id_planned_checkout").value = dateTime
 
 let f = navigator.userAgent.search("Firefox");
 let s = navigator.userAgent.search("Safari");
@@ -41,7 +44,6 @@ else if (f > -1) {
         enableTime: true,
         enableSeconds: false,
         dateFormat: "Y-m-d H:i:s",
-        defaultDate: dateTime,
     }
     flatpickr("input[type=datetime-local]", config);
 }
@@ -50,10 +52,10 @@ else if (s > -1) {
         enableTime: true,
         enableSeconds: false,
         dateFormat: "Y-m-d H:i:s",
-        defaultDate: dateTime,
     }
     flatpickr("input[type=datetime-local]", config);
 }
+
 
 $("#id_nightstay").click(function () {
     var checkBox = document.getElementById("id_nightstay");
