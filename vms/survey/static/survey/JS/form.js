@@ -29,9 +29,15 @@ var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day;
 var time = "17" + ":" + "00" + ":" + "0";
 var dateTime = date + ' ' + time;
 
+var chrome_date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + day;
+var chrome_time = "17" + ":" + "00" + ":" + "00"
+var chrome_dateTime = chrome_date + 'T' + chrome_time;
+
 let f = navigator.userAgent.search("Firefox");
 let s = navigator.userAgent.search("Safari");
 let c = navigator.userAgent.search("Chrome");
+
+document.getElementById("id_planned_checkout").value = chrome_dateTime
 
 if (c > -1) {
     c = 1
@@ -41,7 +47,7 @@ else if (f > -1) {
         enableTime: true,
         enableSeconds: false,
         dateFormat: "Y-m-d H:i:s",
-        defaultDate: dateTime,
+        // defaultDate: dateTime,
     }
     flatpickr("input[type=datetime-local]", config);
 }
@@ -50,10 +56,11 @@ else if (s > -1) {
         enableTime: true,
         enableSeconds: false,
         dateFormat: "Y-m-d H:i:s",
-        defaultDate: dateTime,
+        // defaultDate: dateTime,
     }
     flatpickr("input[type=datetime-local]", config);
 }
+
 
 $("#id_nightstay").click(function () {
     var checkBox = document.getElementById("id_nightstay");
