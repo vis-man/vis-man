@@ -20,7 +20,7 @@ class Visitor(models.Model):
         allowed = '0123456789(+) -'
         for character in value:
             if str(character) not in allowed:
-                raise ValidationError(str(character) + ' is not a valid character for phonenumber.')
+                raise ValidationError('Invalid phone number provided.')
             elif len(value) < 8 or len(value) > 20:
                 raise ValidationError('Phone number must be 8-20 characters long.')
 
