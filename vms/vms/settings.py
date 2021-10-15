@@ -20,8 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'survey.apps.SurveyConfig', 
-    'phonenumber_field',
+    'survey.apps.SurveyConfig',
 ]
 
 MIDDLEWARE = [

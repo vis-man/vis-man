@@ -1,3 +1,1 @@
 Django==3.2.6
-django_phonenumber_field==5.2.0
-phonenumberslite==8.12.31

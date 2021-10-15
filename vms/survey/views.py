@@ -5,8 +5,6 @@ from datetime import datetime
 from django.contrib import messages
 
 '''Sign-on/Sign-out page'''
-
-
 def enter_exit(request, pk):
     context = {
         'site': Site.objects.get(id=pk),
@@ -15,8 +13,6 @@ def enter_exit(request, pk):
 
 
 '''Main page which shows list of sites'''
-
-
 def sites(request):
     context = {
         'sites': Site.objects.all()
@@ -25,8 +21,6 @@ def sites(request):
 
 
 '''Sign-out page to checkout visitors'''
-
-
 def sign_out(request):
     sign_out_form = Sign_out_Form()
     if request.method == 'POST':
@@ -59,8 +53,6 @@ def sign_out(request):
 
 
 '''Sign-in form to checkin visitors'''
-
-
 def sign_in(request, pk):
     site = Site.objects.get(id=pk)
     accomodation = site.accomodation

@@ -1,6 +1,5 @@
 from django.db import models
 from datetime import datetime
-from phonenumber_field.modelfields import PhoneNumberField
 import uuid
 
 '''Site model to store details of each site monitored by VMS'''
