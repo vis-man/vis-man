@@ -16,6 +16,6 @@ class Command(BaseCommand):
         Visitor.objects.filter(~Q(checkin__gt=From, checkin__lte=To)).delete()
         History.objects.filter(~Q(checkin__gt=From, checkin__lte=To)).delete()
         
-
+        return
         
     
