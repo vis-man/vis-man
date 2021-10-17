@@ -150,6 +150,7 @@ class VisitorAdmin(admin.ModelAdmin):
   list_filter = ('site','checkout', 'checkin', 'planned_checkout', 'role','nightstay',)
   search_fields =["first_name", "last_name", "email"]
   readonly_fields = ['checkin', 'checkout']
+  ordering = ('-checkin',)
 
 @admin.register(History)
 class HistoryAdmin(admin.ModelAdmin):
@@ -173,3 +174,4 @@ class HistoryAdmin(admin.ModelAdmin):
   list_filter = ('checkin', 'checkout','nightstay',)
   search_fields =["visitor__first_name", "visitor__last_name"]
   readonly_fields = ['site', 'visitor', 'checkin','checkout','nightstay']
+  ordering = ('-checkout',)
