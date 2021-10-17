@@ -75,7 +75,7 @@ http://localhost:8000/
 ```
 
 ## Directory Structure
-The web app has two main sections. The ```survey``` app contains models, views and controller that the visitors will interact with. '```survey``` has its own static, template, routes, forms, and urls.
+The web app has two main sections. The ```survey``` app contains models, views and controllers that the visitors interact with. '```survey``` has its own static, template, routes, forms, and urls.
 
 The next main section is the admin area where the admins interact with. We have customized the default django admin for this purpose. These customizations are included in separate static and template folders within the ```vms``` directory.
 
