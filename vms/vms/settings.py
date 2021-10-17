@@ -102,3 +102,13 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
     messages.ERROR: 'alert-danger',
 }
+
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'Australia/Perth'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
