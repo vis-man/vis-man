@@ -1,5 +1,6 @@
 # Visitor Management System
 
+---
 ## Project Overview
 
 UWA has several physical sites outside of the Crawley campus that allow visitor access. Currently, there is no robust system to keep track of visitors, which presents potential security and health & safety issues.
@@ -8,6 +9,36 @@ The goal of this project is to supply a robust tracking system that logs visitor
 
 Some sites are more sensitive and require robust entry/exit protocols, while others are less sensitive and simply require visitors to register when they enter and exit the site. The method by which our system is applied at the site-level is outside the scope of this project; our aim is only to supply the system so that it can be accessed by visitors on their personal devices via a QR code, or via a tablet at the front desk when the site is considered sensitive. How the system is applied at any given location is considered the responsibility of those at that individual site.
 
+---
+## Features
+  - Visitor sign-in/sign-out
+  - Dynamic forms
+  - Error handling
+  - Admin dashboard
+  - Admin access to visitor status, and history
+  - Admin can filter data and export to csv
+  - Admin can add new sites, dynamically updated on home page 
+
+---
+## Technologies
+  - Django
+  - HTML5
+  - CSS
+  - JavaScript
+  - Python
+  - Bootstrap 5
+  - Sqlite3
+
+---
+## Screenshots
+![image](https://user-images.githubusercontent.com/61343458/138554874-f68608ce-7955-46b1-9003-fe7119dd49e3.png)
+![image](https://user-images.githubusercontent.com/61343458/138554883-830fda73-39ff-4d82-8951-64c85cab68de.png)
+![image](https://user-images.githubusercontent.com/61343458/138554889-7779db28-1317-4aad-a5ad-323ca4f1bc71.png)
+![image](https://user-images.githubusercontent.com/61343458/138554902-1ec22230-38e1-4216-8c07-3e93f6c714f9.png)
+![image](https://user-images.githubusercontent.com/61343458/138554917-241d9f1a-c36d-49f5-ae02-7ef076ebec93.png)
+![image](https://user-images.githubusercontent.com/61343458/138554936-42ee573f-3cdb-4622-939c-9872da2e2c39.png)
+
+---
 ## Running the Web App on a Linux Server
 
 First make sure your system is up to date by running:
