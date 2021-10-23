@@ -29,6 +29,7 @@ Some sites are more sensitive and require robust entry/exit protocols, while oth
   - Bootstrap 5
   - Sqlite3
 
+---
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/61343458/138554874-f68608ce-7955-46b1-9003-fe7119dd49e3.png)
 ![image](https://user-images.githubusercontent.com/61343458/138554883-830fda73-39ff-4d82-8951-64c85cab68de.png)
